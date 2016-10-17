@@ -26,7 +26,8 @@ legend("topright", inset=.01,
 
 #Q2
 fun <- function(x, labels) { #this assume 0.99 critical value
-  m <- matrix(x, nrow = length(x)/length(labels))
+  m <- matrix(x, nrow = length(x)/length(labels)) #this matrix assume that all data values in the
+  #same group are together, for example, c(1,2,3,4,5,6,7,8) -> 1,2 are in group 1, 
   k = length(labels)
   n = nrow(m)
   tm <- gl(k,1, n*k, factor(labels))
@@ -51,8 +52,8 @@ fun <- function(x, labels) { #this assume 0.99 critical value
 
     df2 <- k*(n-1)
     MSW <- ss/df2
-    f = MS/MSW
-    fvalue <- qf(0.99, df,df2)
+    f = MS/MSW #f-value calculated
+    fvalue <- qf(0.99, df,df2) #f critical value
     if (f > fvalue) {
       return('reject H_0')
     } else {
@@ -62,7 +63,9 @@ fun <- function(x, labels) { #this assume 0.99 critical value
 }
   
 t <- c(7,8,15,11,9,10,12,17,13,18,19,15,14,18,19,17,16,18,19,25,22,23,18,20)
+n <- c(1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,4,4,4,4,4,4)
   
 fun(t,c(1,2,3,4))
+
 
 
